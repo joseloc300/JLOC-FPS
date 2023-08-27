@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://dp35rdb8ctjk4"]
+
+[ext_resource type="Script" path="res://src/maps/common/game_scene_mp.gd" id="2"]
+[ext_resource type="FontFile" path="res://assets/fonts/Staatliches/dyn_font_killfeed.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://pvk4gf0edgs8" path="res://src/gamemodes/ffa/ffa.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dfh0q4rksv02m" path="res://src/maps/test_map/test_map.tscn" id="4_hk1ot"]
+[ext_resource type="Script" path="res://src/maps/common/HUD.gd" id="5"]
+[ext_resource type="FontFile" path="res://assets/fonts/Staatliches/dyn_font_48.tres" id="6"]
+[ext_resource type="PackedScene" path="res://src/gamemodes/common/game_coordinator/game_coordinator.tscn" id="7"]
+
+[node name="GameSceneMP" type="Node3D"]
+script = ExtResource("2")
+
+[node name="GameCoordinator" parent="." instance=ExtResource("7")]
+
+[node name="GameMode" type="Node" parent="."]
+
+[node name="FFA" parent="GameMode" instance=ExtResource("4")]
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="TestMap" parent="Map" instance=ExtResource("4_hk1ot")]
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5")
+
+[node name="KillFeed" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUD/KillFeed"]
+layout_mode = 0
+offset_left = 1620.0
+offset_right = 1920.0
+offset_bottom = 166.0
+theme_override_fonts/normal_font = ExtResource("3")
+scroll_active = false
+scroll_following = true
+
+[node name="Scoreboard" type="Control" parent="HUD"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="Panel" parent="HUD/Scoreboard"]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 240.0
+offset_right = 1560.0
+offset_bottom = 840.0
+
+[node name="GridContainer" type="GridContainer" parent="HUD/Scoreboard"]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 240.0
+offset_right = 1560.0
+offset_bottom = 840.0
+columns = 4
+
+[node name="TimeRemainingLabel" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 960.0
+offset_right = 1035.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("6")
+text = "TIME
+500"
+
+[node name="UpdateHUDTimer" type="Timer" parent="HUD"]
+autostart = true
+
+[connection signal="timeout" from="HUD/UpdateHUDTimer" to="HUD" method="_on_UpdateHUDTimer_timeout"]

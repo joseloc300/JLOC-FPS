@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=2]
+
+[ext_resource path="res://assets/fonts/Staatliches/dyn_font_24.tres" type="FontFile" id=1]
+
+[resource]
+default_font = ExtResource( 1 )
+Dialogs/constants/button_margin = 32
+Dialogs/constants/margin = 8

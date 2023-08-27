@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/weapons/common/gun_data.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+weapon_name = "L96A1"
+node_path = "res://src/weapons/primary/l96a1/l96a1.tscn"
+type = "SR"
+slot = 0
+damage = 120
+fire_rate_rpm = 40
+semi_auto = true
+max_ammo = 30
+max_ammo_mag = 5
+reload_time_sec = 2.5
+swap_time_sec = 1.5
+vertical_recoil_impulse = 0.5
+vertical_recoil_drop = 1.0
+vertical_recoil_max_degrees = 45
+horizontal_recoil_impulse = -1.0
+horizontal_recoil_drop = -1.0
+horizontal_recoil_max_degrees = -1
+move_speed_mult = -1
+range_max_damage = -1.0
+dmg_dropoff_per_10_range = -1.0
+armor_penetration = -1

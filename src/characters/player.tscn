@@ -1,0 +1,172 @@
+[gd_scene load_steps=13 format=3 uid="uid://cg45buu8jx6xe"]
+
+[ext_resource type="FontFile" path="res://assets/fonts/Staatliches/dyn_font_32_3d.tres" id="1"]
+[ext_resource type="FontFile" path="res://assets/fonts/Staatliches/dyn_font_48.tres" id="2"]
+[ext_resource type="Script" path="res://src/characters/player.gd" id="3"]
+[ext_resource type="AudioStream" uid="uid://dlngvttjwy2im" path="res://assets/characters/sounds/footstep_concrete_000.ogg" id="4"]
+[ext_resource type="AudioStream" uid="uid://cfie3aqmqk1ke" path="res://assets/characters/sounds/impactPlate_heavy_004.ogg" id="5"]
+[ext_resource type="AudioStream" uid="uid://dt8gcu1hl4abd" path="res://assets/characters/sounds/error_007.ogg" id="6"]
+[ext_resource type="Texture2D" uid="uid://b1mkio4x41hnc" path="res://assets/characters/crosshairs/crosshairs_tilesheet_black.png" id="7"]
+[ext_resource type="PackedScene" uid="uid://b6iqe6xx0qxi7" path="res://src/weapons/primary/ak_47/ak_47.tscn" id="8"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="2"]
+size = Vector3(1, 1.5, 0.5)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("7")
+region = Rect2(345, 69, 64, 64)
+margin = Rect2(0, 0, 5, 5)
+
+[sub_resource type="ViewportTexture" id="4"]
+viewport_path = NodePath("GUI3D/SubViewport")
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("3")
+
+[node name="Collisions" type="Node3D" parent="."]
+
+[node name="AreaHead" type="Area3D" parent="Collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionHead" type="CollisionShape3D" parent="Collisions/AreaHead"]
+shape = SubResource("1")
+
+[node name="AreaBody" type="Area3D" parent="Collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+collision_layer = 2
+collision_mask = 2147483650
+
+[node name="CollisionBody" type="CollisionShape3D" parent="Collisions/AreaBody"]
+shape = SubResource("2")
+
+[node name="CollisionBody" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("2")
+
+[node name="RotationHelper" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+
+[node name="Model" type="Node3D" parent="RotationHelper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, 0)
+
+[node name="Camera3D" type="Camera3D" parent="RotationHelper"]
+
+[node name="Weapons" type="Node3D" parent="RotationHelper/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.422163, -0.356147, -0.148048)
+
+[node name="Primary" type="Node3D" parent="RotationHelper/Camera3D/Weapons"]
+
+[node name="AK47" parent="RotationHelper/Camera3D/Weapons/Primary" instance=ExtResource("8")]
+
+[node name="Secondary" type="Node3D" parent="RotationHelper/Camera3D/Weapons"]
+visible = false
+
+[node name="AK47" parent="RotationHelper/Camera3D/Weapons/Secondary" instance=ExtResource("8")]
+
+[node name="Melee" type="Node3D" parent="RotationHelper/Camera3D/Weapons"]
+visible = false
+
+[node name="AK47" parent="RotationHelper/Camera3D/Weapons/Melee" instance=ExtResource("8")]
+
+[node name="RayCasts" type="Node3D" parent="RotationHelper/Camera3D"]
+
+[node name="HUD" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="HP" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 950.0
+offset_right = 300.0
+offset_bottom = 1011.0
+theme_override_fonts/font = ExtResource("2")
+text = "HP: 100"
+uppercase = true
+
+[node name="Ammo" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 1600.0
+offset_top = 950.0
+offset_right = 1800.0
+offset_bottom = 1011.0
+theme_override_fonts/font = ExtResource("2")
+text = "Ammo: 0 / 0"
+uppercase = true
+
+[node name="Crosshair" type="TextureRect" parent="HUD"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -34.5
+offset_right = 34.5
+offset_bottom = 34.5
+texture = SubResource("3")
+
+[node name="GUI3D" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="GUI3D"]
+transparent_bg = true
+size = Vector2i(200, 50)
+
+[node name="Label" type="Label" parent="GUI3D/SubViewport"]
+offset_right = 200.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("1")
+text = "Nickname"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXFootsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4")
+pitch_scale = 0.34
+
+[node name="Sound" type="Node3D" parent="."]
+
+[node name="SFXHitEnemy" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("5")
+
+[node name="SFXFootstepsOthers" type="AudioStreamPlayer3D" parent="Sound"]
+stream = ExtResource("4")
+unit_size = 3.0
+
+[node name="SFXHit" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("6")
+volume_db = -5.0
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="RespawnTimer" type="Timer" parent="Timers"]
+wait_time = 5.0
+one_shot = true
+
+[node name="SpawnImmunity" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="NetworkSendRate" type="Timer" parent="Timers"]
+wait_time = 0.05
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+billboard = 1
+texture = SubResource("4")
+
+[connection signal="timeout" from="Timers/RespawnTimer" to="." method="_on_RespawnTimer_timeout"]
+[connection signal="timeout" from="Timers/SpawnImmunity" to="." method="_on_spawn_immunity_timeout"]
+[connection signal="timeout" from="Timers/NetworkSendRate" to="." method="_on_NetworkSendRate_timeout"]

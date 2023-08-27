@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/weapons/common/gun_data.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+weapon_name = "AK 47"
+node_path = "res://src/weapons/primary/ak_47/ak_47.tscn"
+type = "AR"
+slot = 0
+damage = 31
+fire_rate_rpm = 600
+max_ammo = 120
+max_ammo_mag = 30
+reload_time_sec = 2.5
+swap_time_sec = 1.0
+vertical_recoil_impulse = 0.05
+vertical_recoil_drop = 0.35
+vertical_recoil_max_degrees = 45
+horizontal_recoil_impulse = 0.05
+horizontal_recoil_drop = 0.35
+horizontal_recoil_max_degrees = 20
+move_speed_mult = 1
+range_max_damage = 100.0
+dmg_dropoff_per_10_range = 4.0
+armor_penetration = 45

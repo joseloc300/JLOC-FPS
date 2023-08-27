@@ -1,0 +1,164 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbyd8aci1lqcs"]
+
+[ext_resource type="Script" path="res://src/menus/main_menu/main_menu.gd" id="4"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4")
+
+[node name="Main" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BtnHost" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 700.0
+offset_right = 700.0
+offset_bottom = 800.0
+text = "Host"
+
+[node name="BtnJoin" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 700.0
+offset_right = 1500.0
+offset_bottom = 800.0
+text = "Join"
+
+[node name="BtnExit" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 1525.63
+offset_top = 915.376
+offset_right = 1825.63
+offset_bottom = 1015.38
+text = "Exit"
+
+[node name="Host" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MaxPlayers" type="SpinBox" parent="Host"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 500.0
+offset_right = 800.0
+offset_bottom = 560.0
+min_value = 1.0
+max_value = 16.0
+value = 1.0
+
+[node name="Label" type="Label" parent="Host/MaxPlayers"]
+layout_mode = 0
+offset_top = -45.0
+offset_right = 200.0
+text = "Max Players"
+
+[node name="Port" type="LineEdit" parent="Host"]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 500.0
+offset_right = 1400.0
+offset_bottom = 560.0
+
+[node name="Label" type="Label" parent="Host/Port"]
+layout_mode = 0
+offset_top = -45.0
+offset_right = 200.0
+text = "Port"
+
+[node name="BtnCreateLobby" type="Button" parent="Host"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 700.0
+offset_right = 1100.0
+offset_bottom = 800.0
+text = "Create Lobby"
+
+[node name="BtnBack" type="Button" parent="Host"]
+layout_mode = 0
+offset_left = 1500.0
+offset_top = 900.0
+offset_right = 1800.0
+offset_bottom = 1000.0
+text = "Back"
+
+[node name="Join" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ServerAddress" type="LineEdit" parent="Join"]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 500.0
+offset_right = 800.0
+offset_bottom = 560.0
+
+[node name="Label" type="Label" parent="Join/ServerAddress"]
+layout_mode = 0
+offset_top = -45.0
+offset_right = 200.0
+text = "Server Address"
+
+[node name="Port" type="LineEdit" parent="Join"]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 500.0
+offset_right = 1400.0
+offset_bottom = 560.0
+
+[node name="Label" type="Label" parent="Join/Port"]
+layout_mode = 0
+offset_top = -45.0
+offset_right = 200.0
+text = "Port"
+
+[node name="BtnJoinLobby" type="Button" parent="Join"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 700.0
+offset_right = 1100.0
+offset_bottom = 800.0
+text = "Join Lobby"
+
+[node name="BtnBack" type="Button" parent="Join"]
+layout_mode = 0
+offset_left = 1500.0
+offset_top = 900.0
+offset_right = 1800.0
+offset_bottom = 1000.0
+text = "Back"
+
+[node name="PlayerNickname" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 200.0
+offset_right = 1400.0
+offset_bottom = 300.0
+placeholder_text = "Player Nickname"
+
+[node name="Popups" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ConnectionError" type="AcceptDialog" parent="Popups"]
+dialog_autowrap = true
+
+[connection signal="pressed" from="Main/BtnHost" to="." method="_on_BtnHost_pressed"]
+[connection signal="pressed" from="Main/BtnJoin" to="." method="_on_BtnJoin_pressed"]
+[connection signal="pressed" from="Main/BtnExit" to="." method="_on_BtnExit_pressed"]
+[connection signal="pressed" from="Host/BtnCreateLobby" to="." method="_on_BtnCreateLobby_pressed"]
+[connection signal="pressed" from="Host/BtnBack" to="." method="_on_BtnBack_Host_pressed"]
+[connection signal="pressed" from="Join/BtnJoinLobby" to="." method="_on_BtnJoinLobby_pressed"]
+[connection signal="pressed" from="Join/BtnBack" to="." method="_on_BtnBack_Join_pressed"]

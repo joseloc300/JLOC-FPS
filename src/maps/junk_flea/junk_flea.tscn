@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://dh1pglo0io6lj"]
+
+[ext_resource type="Script" path="res://src/maps/junk_flea/junk_flea.gd" id="1_0feou"]
+[ext_resource type="Material" path="res://assets/maps/models/test_map/prototype_mat.tres" id="2_cygaj"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(30, 0.5, 30)
+
+[sub_resource type="BoxShape3D" id="2"]
+size = Vector3(30, 5, 0.5)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lwsex"]
+
+[sub_resource type="Sky" id="7"]
+sky_material = SubResource("ProceduralSkyMaterial_lwsex")
+
+[sub_resource type="Environment" id="8"]
+background_mode = 2
+sky = SubResource("7")
+
+[node name="TestMap" type="Node3D"]
+script = ExtResource("1_0feou")
+
+[node name="BasicStructure" type="Node3D" parent="."]
+
+[node name="Floor" type="Node3D" parent="BasicStructure"]
+
+[node name="Collisions" type="StaticBody3D" parent="BasicStructure/Floor"]
+
+[node name="Collision0" type="CollisionShape3D" parent="BasicStructure/Floor/Collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("1")
+
+[node name="Meshes" type="Node3D" parent="BasicStructure/Floor"]
+
+[node name="Floor0" type="CSGBox3D" parent="BasicStructure/Floor/Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(60, 1, 60)
+material = ExtResource("2_cygaj")
+
+[node name="Walls" type="Node3D" parent="BasicStructure"]
+
+[node name="Collisions" type="StaticBody3D" parent="BasicStructure/Walls"]
+
+[node name="Collision0" type="CollisionShape3D" parent="BasicStructure/Walls/Collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -30.5)
+shape = SubResource("2")
+
+[node name="Collision1" type="CollisionShape3D" parent="BasicStructure/Walls/Collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 30.5)
+shape = SubResource("2")
+
+[node name="Collision2" type="CollisionShape3D" parent="BasicStructure/Walls/Collisions"]
+transform = Transform3D(-1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 30.5, 5, 0)
+shape = SubResource("2")
+
+[node name="Collision3" type="CollisionShape3D" parent="BasicStructure/Walls/Collisions"]
+transform = Transform3D(-1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -30.5, 5, 0)
+shape = SubResource("2")
+
+[node name="Meshes" type="Node3D" parent="BasicStructure/Walls"]
+
+[node name="Wall0" type="CSGBox3D" parent="BasicStructure/Walls/Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -30.5)
+size = Vector3(60, 10, 1)
+material = ExtResource("2_cygaj")
+
+[node name="Wall1" type="CSGBox3D" parent="BasicStructure/Walls/Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 30.5)
+size = Vector3(60, 10, 1)
+material = ExtResource("2_cygaj")
+
+[node name="Wall2" type="CSGBox3D" parent="BasicStructure/Walls/Meshes"]
+transform = Transform3D(-1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 30.5, 5, 0)
+size = Vector3(60, 10, 1)
+material = ExtResource("2_cygaj")
+
+[node name="Wall3" type="CSGBox3D" parent="BasicStructure/Walls/Meshes"]
+transform = Transform3D(-1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -30.5, 5, 0)
+size = Vector3(60, 10, 1)
+material = ExtResource("2_cygaj")
+
+[node name="ExtraStructure" type="Node3D" parent="."]
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="All" type="Node3D" parent="SpawnPoints"]
+
+[node name="Spawn0" type="Marker3D" parent="SpawnPoints/All"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="BlueTeam" type="Node3D" parent="SpawnPoints"]
+
+[node name="RedTeam" type="Node3D" parent="SpawnPoints"]
+
+[node name="Spectator" type="Node3D" parent="."]
+
+[node name="Spectator0" type="Marker3D" parent="Spectator"]
+transform = Transform3D(-0.12336, 0.91472, 0.384798, 0.279246, 0.404088, -0.871054, -0.952263, 0, -0.30528, -19.6095, 10.9185, 21.7287)
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(1, 0, 0, 0, 0.597065, 0.802193, 0, -0.802193, 0.597065, 0, 20, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("8")

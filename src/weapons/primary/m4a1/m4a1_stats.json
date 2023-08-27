@@ -1,0 +1,10 @@
+{
+	"damage": 23,
+	"fire_rate_rpm": 300,
+	"semi_auto": false,
+	"max_ammo": 120,
+	"max_ammo_mag": 30,
+	"reload_time_sec": 2.5,
+	"swap_time_sec": 2.0,
+	"raycasts_path": "m4a1_raycasts.tscn"
+}

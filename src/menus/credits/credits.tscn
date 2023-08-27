@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://f84rjix1yqx6"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 500.618
+offset_top = 197.553
+offset_right = 1615.62
+offset_bottom = 834.553
+text = "kenney.nl
+	- Prototype textures
+	- Character model
+
+quaternius.com
+	- Gun models"

@@ -1,0 +1,8 @@
+{
+	"TEST": {
+		"name": "Test Map",
+		"max_players": 16,
+		"supported_game_modes": ["FFA", "SND", "TDM"],
+		"node_path": "res://src/"
+	}
+}

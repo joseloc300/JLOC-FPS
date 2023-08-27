@@ -1,0 +1,23 @@
+{
+	"FFA": {
+		"name": "Free For All",
+		"win_conditionv_alues": [15, 30, 45],
+		"win_condition_type": "K",
+		"n_teams": 1,
+		"node_path": "res://src/" 
+	},
+	"SND": {
+		"name": "Search And Destroy",
+		"win_conditionv_alues": [3, 5, 7, 9],
+		"win_condition_type": "R",
+		"n_teams": 2,
+		"node_path": "res://src/" 
+	},
+	"TDM": {
+		"name": "Team Deathmatch",
+		"win_conditionv_alues": [25, 50, 75, 100, 125, 150],
+		"win_condition_type": "K",
+		"n_teams": 2,
+		"node_path": "res://src/" 
+	}
+}

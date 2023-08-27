@@ -1,0 +1,139 @@
+{
+	"PRIMARY": {
+		"AR": {
+			"AK47": {
+				"name": "AK 47",
+				"node_path": "res://src/weapons/primary/ak_47/ak_47.tscn",
+				"slot": 0,
+				"damage": 31,
+				"fire_rate_rpm": 600,
+				"semi_auto": false,
+				"max_ammo": 120,
+				"max_ammo_mag": 30,
+				"reload_time_sec": 2.5,
+				"swap_time_sec": 1.0,
+				"recoil_vertical_impulse": 0.05,
+				"recoil_vertical_drop": 0.35,
+				"max_vertical_recoil_degrees": 45,
+				"recoil_horizontal_impulse": 0.05,
+				"recoil_horizontal_drop": 0.35,
+				"max_horizontal_recoil_degrees": 20,
+				"move_speed": 1,
+				"range_max_damage": 100,
+				"dmg_dropoff_per_10_range": 4,
+				"armor_penetration": 45
+			},
+			"M4A1": {
+				"name": "M4A1",
+				"node_path": "res://src/weapons/primary/m4a1/m4a1.tscn",
+				"slot": 0,
+				"damage": 28,
+				"fire_rate_rpm": 666,
+				"semi_auto": false,
+				"max_ammo": 120,
+				"max_ammo_mag": 30,
+				"reload_time_sec": 2.5,
+				"swap_time_sec": 1.0,
+				"recoil_vertical_impulse": 0.03,
+				"recoil_vertical_drop": 0.25,
+				"max_vertical_recoil_degrees": 30,
+				"recoil_horizontal_impulse": 0.03,
+				"recoil_horizontal_drop": 0.25,
+				"max_horizontal_recoil_degrees": 20,
+				"move_speed": 1,
+				"range_max_damage": 100,
+				"dmg_dropoff_per_10_range": 4,
+				"armor_penetration": 45
+			}
+		},
+		"LMG": {
+
+		},
+		"SG": {
+
+		},
+		"SMG": {
+			"MP5": {
+				"name": "MP5",
+				"node_path": "res://src/weapons/primary/mp5/mp5.tscn",
+				"slot": 0,
+				"damage": 20,
+				"fire_rate_rpm": 800,
+				"semi_auto": false,
+				"max_ammo": 120,
+				"max_ammo_mag": 30,
+				"reload_time_sec": 1.7,
+				"swap_time_sec": 0.8,
+				"recoil_vertical_impulse": 0.045,
+				"recoil_vertical_drop": 0.35,
+				"max_vertical_recoil_degrees": 50,
+				"recoil_horizontal_impulse": 0.045,
+				"recoil_horizontal_drop": 0.35,
+				"max_horizontal_recoil_degrees": 20,
+				"move_speed": 1,
+				"range_max_damage": 100,
+				"dmg_dropoff_per_10_range": 4,
+				"armor_penetration": 45
+			}
+		},
+		"SR": {
+			"L96A1": {
+				"name": "L96A1",
+				"node_path": "res://src/weapons/primary/l96a1/l96a1.tscn",
+				"slot": 0,
+				"damage": 120,
+				"fire_rate_rpm": 40,
+				"semi_auto": true,
+				"max_ammo": 30,
+				"max_ammo_mag": 5,
+				"reload_time_sec": 2.5,
+				"swap_time_sec": 1.5,
+				"recoil_vertical_impulse": 0.5,
+				"recoil_vertical_drop": 1.0,
+				"max_vertical_recoil_degrees": 45,
+				"recoil_horizontal_impulse": 0.0,
+				"recoil_horizontal_drop": 0.0,
+				"max_horizontal_recoil_degrees": 0,
+				"move_speed": 1,
+				"range_max_damage": 100,
+				"dmg_dropoff_per_10_range": 4,
+				"armor_penetration": 45
+			}
+		}
+	},
+	"SECONDARY": {
+		"M1911": {
+			"name": "M1911",
+			"node_path": "res://src/weapons/secondary/m1911/m1911.tscn",
+			"slot": 1,
+			"damage": 35,
+			"fire_rate_rpm": 120,
+			"semi_auto": true,
+			"max_ammo": 32,
+			"max_ammo_mag": 8,
+			"reload_time_sec": 1.7,
+			"swap_time_sec": 0.8,
+			"recoil_vertical_impulse": 0.06,
+			"recoil_vertical_drop": 0.4,
+			"max_vertical_recoil_degrees": 50,
+			"recoil_horizontal_impulse": 0.06,
+			"recoil_horizontal_drop": 0.4,
+			"max_horizontal_recoil_degrees": 20,
+			"move_speed": 1,
+			"range_max_damage": 100,
+			"dmg_dropoff_per_10_range": 4,
+			"armor_penetration": 45
+		}
+	},
+	"MELEE": {
+		"M9": {
+			"name": "M9 Bayonet",
+			"node_path": "res://src/weapons/melee/m9_bayonet/m9_bayonet.tscn",
+			"slot": 0,
+			"damage": 65,
+			"attack_speed": 0.8,
+			"move_speed": 1,
+			"armor_penetration": 90
+		}
+	}
+}

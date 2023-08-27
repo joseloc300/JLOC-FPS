@@ -1,0 +1,275 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/maps/models/test_map/prototype_mat.tres" type="Material" id=1]
+[ext_resource path="res://src/maps/arkaden/components/Ramp.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/maps/test_map/test_map.gd" type="Script" id=3]
+[ext_resource path="res://src/maps/arkaden/components/Store.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/maps/arkaden/components/Wall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/maps/arkaden/components/BigBox.tscn" type="PackedScene" id=6]
+
+[sub_resource type="BoxShape3D" id=1]
+size = Vector3( 30, 0.5, 30 )
+
+[sub_resource type="BoxShape3D" id=2]
+size = Vector3( 30, 5, 0.5 )
+
+[sub_resource type="Sky" id=3]
+
+[sub_resource type="Environment" id=4]
+background_mode = 2
+background_sky = SubResource( 3 )
+
+[node name="Arkaden" type="Node3D"]
+script = ExtResource( 3 )
+
+[node name="BasicStructure" type="Node3D" parent="."]
+
+[node name="Floor" type="Node3D" parent="BasicStructure"]
+
+[node name="Collisions" type="StaticBody3D" parent="BasicStructure/Floor"]
+
+[node name="Collision0" type="CollisionShape3D" parent="BasicStructure/Floor/Collisions"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+shape = SubResource( 1 )
+
+[node name="Meshes" type="Node3D" parent="BasicStructure/Floor"]
+
+[node name="Floor0" type="CSGBox3D" parent="BasicStructure/Floor/Meshes"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+width = 60.0
+height = 1.0
+depth = 60.0
+material = ExtResource( 1 )
+
+[node name="Floor2" type="Node3D" parent="BasicStructure"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 5, 0 )
+
+[node name="Meshes" type="Node3D" parent="BasicStructure/Floor2"]
+
+[node name="Floor0" type="CSGBox3D" parent="BasicStructure/Floor2/Meshes"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+use_collision = true
+width = 30.0
+height = 1.0
+depth = 60.0
+material = ExtResource( 1 )
+
+[node name="CSGBox3D" type="CSGBox3D" parent="BasicStructure/Floor2/Meshes/Floor0"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.00298, -0.0681214, -4.8048 )
+operation = 2
+width = 8.0
+depth = 12.0
+
+[node name="Floor3" type="Node3D" parent="BasicStructure"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 10, 0 )
+
+[node name="Collisions" type="StaticBody3D" parent="BasicStructure/Floor3"]
+
+[node name="Collision0" type="CollisionShape3D" parent="BasicStructure/Floor3/Collisions"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+visible = false
+shape = SubResource( 1 )
+
+[node name="Meshes" type="Node3D" parent="BasicStructure/Floor3"]
+
+[node name="Floor0" type="CSGBox3D" parent="BasicStructure/Floor3/Meshes"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+width = 30.0
+height = 1.0
+depth = 60.0
+material = ExtResource( 1 )
+
+[node name="CSGBox3D" type="CSGBox3D" parent="BasicStructure/Floor3/Meshes/Floor0"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.00298, -0.068121, -4.8048 )
+visible = false
+operation = 2
+width = 8.0
+depth = 12.0
+
+[node name="Walls" type="Node3D" parent="BasicStructure"]
+
+[node name="Collisions" type="StaticBody3D" parent="BasicStructure/Walls"]
+
+[node name="Collision0" type="CollisionShape3D" parent="BasicStructure/Walls/Collisions"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -30.5 )
+shape = SubResource( 2 )
+
+[node name="Collision1" type="CollisionShape3D" parent="BasicStructure/Walls/Collisions"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 30.5 )
+shape = SubResource( 2 )
+
+[node name="Collision2" type="CollisionShape3D" parent="BasicStructure/Walls/Collisions"]
+transform = Transform3D( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 30.5, 5, 0 )
+shape = SubResource( 2 )
+
+[node name="Collision3" type="CollisionShape3D" parent="BasicStructure/Walls/Collisions"]
+transform = Transform3D( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -30.5, 5, 0 )
+shape = SubResource( 2 )
+
+[node name="Meshes" type="Node3D" parent="BasicStructure/Walls"]
+
+[node name="Wall0" type="CSGBox3D" parent="BasicStructure/Walls/Meshes"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -30.5 )
+width = 60.0
+height = 10.0
+depth = 1.0
+material = ExtResource( 1 )
+
+[node name="Wall1" type="CSGBox3D" parent="BasicStructure/Walls/Meshes"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 30.5 )
+width = 60.0
+height = 10.0
+depth = 1.0
+material = ExtResource( 1 )
+
+[node name="Wall2" type="CSGBox3D" parent="BasicStructure/Walls/Meshes"]
+transform = Transform3D( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 30.5, 5, 0 )
+width = 60.0
+height = 10.0
+depth = 1.0
+material = ExtResource( 1 )
+
+[node name="Wall3" type="CSGBox3D" parent="BasicStructure/Walls/Meshes"]
+transform = Transform3D( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -30.5, 5, 0 )
+width = 60.0
+height = 10.0
+depth = 1.0
+material = ExtResource( 1 )
+
+[node name="ExtraStructure" type="Node3D" parent="."]
+
+[node name="BigBoxes" type="Node3D" parent="ExtraStructure"]
+
+[node name="BigBox0" parent="ExtraStructure/BigBoxes" instance=ExtResource( 6 )]
+
+[node name="Walls" type="Node3D" parent="ExtraStructure/BigBoxes"]
+
+[node name="BigBox1" parent="ExtraStructure/BigBoxes/Walls" instance=ExtResource( 6 )]
+transform = Transform3D( 0.2, 0, 0, 0, 1, 0, 0, 0, 2, 1.5, 7.5, -11.885 )
+
+[node name="BigBox2" parent="ExtraStructure/BigBoxes/Walls" instance=ExtResource( 6 )]
+transform = Transform3D( 0.2, 0, 0, 0, 1, 0, 0, 0, 2, 1.5, 7.5, 13.486 )
+
+[node name="Cover" type="Node3D" parent="ExtraStructure/BigBoxes"]
+
+[node name="BigBox1" parent="ExtraStructure/BigBoxes/Cover" instance=ExtResource( 6 )]
+transform = Transform3D( -8.74228e-09, 0, 1, 0, 0.3, 0, -0.2, 0, -4.37114e-08, 22.1218, 5.72209, 6.94289 )
+
+[node name="BigBox2" parent="ExtraStructure/BigBoxes/Cover" instance=ExtResource( 6 )]
+transform = Transform3D( -8.74228e-09, 0, 1, 0, 0.3, 0, -0.2, 0, -4.37114e-08, 11.8019, 5.72209, 6.94289 )
+
+[node name="BigBox3" parent="ExtraStructure/BigBoxes/Cover" instance=ExtResource( 6 )]
+transform = Transform3D( -8.74228e-09, 0, 1, 0, 0.3, 0, -0.2, 0, -4.37114e-08, 22.1218, 5.72209, 12.4133 )
+
+[node name="BigBox4" parent="ExtraStructure/BigBoxes/Cover" instance=ExtResource( 6 )]
+transform = Transform3D( -8.74228e-09, 0, 1, 0, 0.3, 0, -0.2, 0, -4.37114e-08, 11.8019, 5.72209, 12.4133 )
+
+[node name="BigBox5" parent="ExtraStructure/BigBoxes/Cover" instance=ExtResource( 6 )]
+transform = Transform3D( 0.2, 0, 0, 0, 0.3, 0, 0, 0, 1, 13.9381, 5.68707, -6.6831 )
+
+[node name="BigBox6" parent="ExtraStructure/BigBoxes/Cover" instance=ExtResource( 6 )]
+transform = Transform3D( 0.2, 0, 0, 0, 0.3, 0, 0, 0, 1, 7.26346, 5.68707, -2.13522 )
+
+[node name="BigBox7" parent="ExtraStructure/BigBoxes/Cover" instance=ExtResource( 6 )]
+transform = Transform3D( -8.74228e-09, 0, 1, 0, 0.3, 0, -0.2, 0, -4.37114e-08, 8.99858, 5.68707, -11.3201 )
+
+[node name="Walls" type="Node3D" parent="ExtraStructure"]
+
+[node name="Wall0" parent="ExtraStructure/Walls" instance=ExtResource( 5 )]
+
+[node name="Ramps" type="Node3D" parent="ExtraStructure"]
+
+[node name="Ramp" parent="ExtraStructure/Ramps" instance=ExtResource( 5 )]
+transform = Transform3D( 0.25, 0, 0, 0, 1.75, -0.866025, 0, 3.03109, 0.5, 25.7616, 2.1683, -3.21942 )
+
+[node name="Corrimon" parent="ExtraStructure/Ramps/Ramp" instance=ExtResource( 5 )]
+transform = Transform3D( 1.51846e-08, -1.52732e-06, -0.8, -3.72529e-09, -1, 6.23397e-09, -0.1, 4.76837e-07, -7.59228e-09, 4.66376, 0.113995, -0.691058 )
+
+[node name="Corrimon2" parent="ExtraStructure/Ramps/Ramp" instance=ExtResource( 5 )]
+transform = Transform3D( 1.51846e-08, -1.52732e-06, -0.8, -3.72529e-09, -1, 6.23397e-09, -0.1, 3.57628e-07, -7.59228e-09, -4.84024, 0.113995, -0.691058 )
+
+[node name="Ramp2" parent="ExtraStructure/Ramps" instance=ExtResource( 5 )]
+transform = Transform3D( 0.25, 0, 0, 0, 1.75, -0.866025, 0, 3.03109, 0.5, 20.2889, 2.1683, -3.21942 )
+
+[node name="Corrimon" parent="ExtraStructure/Ramps/Ramp2" instance=ExtResource( 5 )]
+transform = Transform3D( 1.51846e-08, -1.52732e-06, -0.8, -3.72529e-09, -1, 6.23397e-09, -0.1, 4.76837e-07, -7.59228e-09, 4.66376, 0.113995, -0.691058 )
+
+[node name="Corrimon2" parent="ExtraStructure/Ramps/Ramp2" instance=ExtResource( 5 )]
+transform = Transform3D( 1.51846e-08, -1.52732e-06, -0.8, -3.72529e-09, -1, 6.23397e-09, -0.1, 3.57628e-07, -7.59228e-09, -4.84024, 0.113995, -0.691058 )
+
+[node name="Ramp3" parent="ExtraStructure/Ramps" instance=ExtResource( 2 )]
+transform = Transform3D( -1.09278e-08, 3.03109, 0.5, -7.45058e-09, 1.75, -0.866025, -0.25, -1.78814e-07, -2.98023e-08, -6.96659, 2.168, 0.12 )
+
+[node name="Stores" type="Node3D" parent="ExtraStructure"]
+
+[node name="Store0" parent="ExtraStructure/Stores" instance=ExtResource( 4 )]
+
+[node name="Store1" parent="ExtraStructure/Stores" instance=ExtResource( 4 )]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.49, 0, 0.136765 )
+
+[node name="Wall5" parent="ExtraStructure/Stores/Store1" instance=ExtResource( 5 )]
+transform = Transform3D( -3.49691e-08, 0, 1, 0, 1, 0, -0.8, 0, -4.37114e-08, 29.7358, 6.5, 25.8452 )
+
+[node name="Stores2" type="Node3D" parent="ExtraStructure"]
+transform = Transform3D( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32, 0, 2 )
+
+[node name="Store0" parent="ExtraStructure/Stores2" instance=ExtResource( 4 )]
+
+[node name="Store1" parent="ExtraStructure/Stores2" instance=ExtResource( 4 )]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.49, 0, 0.136765 )
+
+[node name="Wall5" parent="ExtraStructure/Stores2/Store1" instance=ExtResource( 5 )]
+transform = Transform3D( -3.49691e-08, 0, 1, 0, 1, 0, -0.8, 0, -4.37114e-08, 29.7358, 6.5, 25.8452 )
+
+[node name="Columns" type="Node3D" parent="ExtraStructure"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="ExtraStructure/Columns"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1198, 4.08733, 0.0678117 )
+radius = 0.85
+height = 10.0
+sides = 16
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="All" type="Node3D" parent="SpawnPoints"]
+
+[node name="Spawn0" type="Marker3D" parent="SpawnPoints/All"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.61616, 2, 0 )
+
+[node name="Spawn1" type="Marker3D" parent="SpawnPoints/All"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -24.3366 )
+
+[node name="Spawn2" type="Marker3D" parent="SpawnPoints/All"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4993, 2, -18.3572 )
+
+[node name="Spawn3" type="Marker3D" parent="SpawnPoints/All"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8668, 2, -19.5833 )
+
+[node name="Spawn4" type="Marker3D" parent="SpawnPoints/All"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64234, 2, 19.9948 )
+
+[node name="Spawn5" type="Marker3D" parent="SpawnPoints/All"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8619, 2, 19.4773 )
+
+[node name="Spawn6" type="Marker3D" parent="SpawnPoints/All"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5645, 2, 6.59613 )
+
+[node name="BlueBase" type="Node3D" parent="SpawnPoints"]
+
+[node name="RedBase" type="Node3D" parent="SpawnPoints"]
+
+[node name="Spectator" type="Node3D" parent="."]
+
+[node name="Spectator0" type="Marker3D" parent="Spectator"]
+transform = Transform3D( -0.12336, 0.91472, 0.384798, 0.279246, 0.404088, -0.871054, -0.952263, 0, -0.30528, -19.6095, 10.9185, 21.7287 )
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 20, 0 )
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )

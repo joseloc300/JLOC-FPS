@@ -1,0 +1,233 @@
+[gd_scene load_steps=7 format=3 uid="uid://dudwc0gqlv6mg"]
+
+[ext_resource type="Script" path="res://src/menus/lobby/lobby.gd" id="1"]
+[ext_resource type="FontFile" path="res://assets/fonts/Staatliches/dyn_font_48.tres" id="2"]
+[ext_resource type="FontFile" path="res://assets/fonts/Staatliches/dyn_font_32.tres" id="3"]
+[ext_resource type="FontFile" path="res://assets/fonts/Staatliches/dyn_font_24.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://bib8colg1gstt" path="res://src/menus/lobby/components/loadout_manager.tscn" id="5"]
+
+[sub_resource type="ViewportTexture" id="1"]
+viewport_path = NodePath("SelectedSkinRender/SubViewport")
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="TeamMapSelector" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BlueTeam" type="Control" parent="TeamMapSelector"]
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 150.0
+offset_right = 50.0
+offset_bottom = 150.0
+
+[node name="Panel" type="Panel" parent="TeamMapSelector/BlueTeam"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 600.0
+
+[node name="Team" type="Label" parent="TeamMapSelector/BlueTeam"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("3")
+text = "Blue team"
+
+[node name="Players" type="RichTextLabel" parent="TeamMapSelector/BlueTeam"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 47.6216
+offset_right = 250.0
+offset_bottom = 547.622
+
+[node name="BtnBlue" type="Button" parent="TeamMapSelector/BlueTeam"]
+layout_mode = 0
+offset_top = 550.0
+offset_right = 300.0
+offset_bottom = 600.0
+theme_override_fonts/font = ExtResource("3")
+text = "Switch To Blue Team"
+
+[node name="RedTeam" type="Control" parent="TeamMapSelector"]
+anchors_preset = 0
+offset_left = 400.0
+offset_top = 150.0
+offset_right = 400.0
+offset_bottom = 150.0
+
+[node name="Panel" type="Panel" parent="TeamMapSelector/RedTeam"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 600.0
+
+[node name="Team" type="Label" parent="TeamMapSelector/RedTeam"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("3")
+text = "Red Team"
+
+[node name="Players" type="RichTextLabel" parent="TeamMapSelector/RedTeam"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 250.0
+offset_bottom = 550.0
+
+[node name="BtnRed" type="Button" parent="TeamMapSelector/RedTeam"]
+layout_mode = 0
+offset_top = 550.0
+offset_right = 300.0
+offset_bottom = 600.0
+theme_override_fonts/font = ExtResource("3")
+text = "Switch To Red Team"
+
+[node name="Chat" type="Control" parent="TeamMapSelector"]
+anchors_preset = 0
+offset_left = 750.0
+offset_top = 150.0
+offset_right = 750.0
+offset_bottom = 150.0
+
+[node name="Panel" type="Panel" parent="TeamMapSelector/Chat"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 600.0
+
+[node name="Label" type="Label" parent="TeamMapSelector/Chat"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("3")
+text = "Chat"
+
+[node name="ChatText" type="RichTextLabel" parent="TeamMapSelector/Chat"]
+layout_mode = 0
+offset_top = 50.0
+offset_right = 400.0
+offset_bottom = 550.0
+theme_override_fonts/normal_font = ExtResource("4")
+bbcode_enabled = true
+
+[node name="ChatMessage" type="LineEdit" parent="TeamMapSelector/Chat"]
+layout_mode = 0
+offset_top = 550.0
+offset_right = 400.0
+offset_bottom = 600.0
+theme_override_fonts/font = ExtResource("4")
+placeholder_text = "Enter message"
+
+[node name="MapModeSelector" type="Control" parent="TeamMapSelector"]
+anchors_preset = 0
+offset_left = 1200.0
+offset_top = 150.0
+offset_right = 1200.0
+offset_bottom = 150.0
+
+[node name="MapPreview" type="TextureRect" parent="TeamMapSelector/MapModeSelector"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("1")
+
+[node name="Placeholder" type="ColorRect" parent="TeamMapSelector/MapModeSelector"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="OptionGameMode" type="OptionButton" parent="TeamMapSelector/MapModeSelector"]
+layout_mode = 0
+offset_top = 380.0
+offset_right = 640.0
+offset_bottom = 455.0
+theme_override_fonts/font = ExtResource("4")
+
+[node name="OptionMap" type="OptionButton" parent="TeamMapSelector/MapModeSelector"]
+layout_mode = 0
+offset_top = 475.0
+offset_right = 640.0
+offset_bottom = 550.0
+theme_override_fonts/font = ExtResource("4")
+
+[node name="Buttons" type="Control" parent="TeamMapSelector"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BtnEditLoadout" type="Button" parent="TeamMapSelector/Buttons"]
+layout_mode = 0
+offset_top = 880.0
+offset_right = 640.0
+offset_bottom = 1080.0
+theme_override_fonts/font = ExtResource("2")
+text = "Edit Loadout"
+
+[node name="BtnReady" type="Button" parent="TeamMapSelector/Buttons"]
+visible = false
+layout_mode = 0
+offset_left = 640.0
+offset_top = 880.0
+offset_right = 1280.0
+offset_bottom = 1080.0
+theme_override_fonts/font = ExtResource("2")
+text = "Ready"
+
+[node name="BtnUnready" type="Button" parent="TeamMapSelector/Buttons"]
+visible = false
+layout_mode = 0
+offset_left = 640.0
+offset_top = 880.0
+offset_right = 1280.0
+offset_bottom = 1080.0
+theme_override_fonts/font = ExtResource("2")
+text = "Unready"
+
+[node name="BtnStartGame" type="Button" parent="TeamMapSelector/Buttons"]
+visible = false
+layout_mode = 0
+offset_left = 640.0
+offset_top = 880.0
+offset_right = 1280.0
+offset_bottom = 1080.0
+theme_override_fonts/font = ExtResource("2")
+text = "Start The Game"
+
+[node name="BtnLeaveLobby" type="Button" parent="TeamMapSelector/Buttons"]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 880.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_fonts/font = ExtResource("2")
+text = "Leave Lobby"
+
+[node name="LoadoutManager" parent="." instance=ExtResource("5")]
+visible = false
+
+[node name="TimerUpdateTeams" type="Timer" parent="."]
+autostart = true
+
+[connection signal="pressed" from="TeamMapSelector/BlueTeam/BtnBlue" to="." method="_on_BtnBlue_pressed"]
+[connection signal="pressed" from="TeamMapSelector/RedTeam/BtnRed" to="." method="_on_BtnRed_pressed"]
+[connection signal="text_submitted" from="TeamMapSelector/Chat/ChatMessage" to="." method="_on_ChatMessage_text_entered"]
+[connection signal="item_selected" from="TeamMapSelector/MapModeSelector/OptionGameMode" to="." method="_on_OptionGameMode_item_selected"]
+[connection signal="item_selected" from="TeamMapSelector/MapModeSelector/OptionMap" to="." method="_on_OptionMap_item_selected"]
+[connection signal="pressed" from="TeamMapSelector/Buttons/BtnEditLoadout" to="." method="_on_BtnEditLoadout_pressed"]
+[connection signal="pressed" from="TeamMapSelector/Buttons/BtnReady" to="." method="_on_BtnReady_pressed"]
+[connection signal="pressed" from="TeamMapSelector/Buttons/BtnUnready" to="." method="_on_BtnUnready_pressed"]
+[connection signal="pressed" from="TeamMapSelector/Buttons/BtnStartGame" to="." method="_on_btn_start_game_pressed"]
+[connection signal="pressed" from="TeamMapSelector/Buttons/BtnLeaveLobby" to="." method="_on_BtnLeaveLobby_pressed"]
+[connection signal="pressed" from="LoadoutManager/BtnBack" to="." method="_on_BtnLoadoutManagerBack_pressed"]
+[connection signal="timeout" from="TimerUpdateTeams" to="." method="_on_TimerUpdateTeams_timeout"]
+
+[editable path="LoadoutManager"]

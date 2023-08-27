@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/weapons/primary/ak_47/ak_47.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/characters/training_dummy.gd" type="Script" id=3]
+[ext_resource path="res://assets/characters/sounds/footstep_concrete_000.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/characters/sounds/impactPlate_heavy_004.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/characters/sounds/error_007.ogg" type="AudioStream" id=7]
+
+[sub_resource type="BoxShape3D" id=1]
+size = Vector3( 0.25, 0.25, 0.25 )
+
+[sub_resource type="BoxShape3D" id=2]
+size = Vector3( 0.5, 0.75, 0.25 )
+
+[node name="Player_TrainingDummy" type="CharacterBody3D"]
+script = ExtResource( 3 )
+
+[node name="Collisions" type="Node3D" parent="."]
+
+[node name="AreaHead" type="Area3D" parent="Collisions"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionHead" type="CollisionShape3D" parent="Collisions/AreaHead"]
+shape = SubResource( 1 )
+
+[node name="AreaBody" type="Area3D" parent="Collisions"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0 )
+collision_layer = 2
+collision_mask = 2147483650
+
+[node name="CollisionBody" type="CollisionShape3D" parent="Collisions/AreaBody"]
+shape = SubResource( 2 )
+
+[node name="CollisionBody" type="CollisionShape3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0 )
+shape = SubResource( 2 )
+
+[node name="RotationHelper" type="Node3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0 )
+
+[node name="Model" type="Node3D" parent="RotationHelper"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, 0 )
+
+[node name="Camera3D" type="Camera3D" parent="RotationHelper"]
+fov = 90.0
+
+[node name="Weapons" type="Node3D" parent="RotationHelper/Camera3D"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.422163, -0.356147, -0.148048 )
+
+[node name="Primary" type="Node3D" parent="RotationHelper/Camera3D/Weapons"]
+
+[node name="AK47" parent="RotationHelper/Camera3D/Weapons/Primary" instance=ExtResource( 2 )]
+
+[node name="Secondary" type="Node3D" parent="RotationHelper/Camera3D/Weapons"]
+
+[node name="Melee" type="Node3D" parent="RotationHelper/Camera3D/Weapons"]
+
+[node name="Sound" type="Node3D" parent="."]
+
+[node name="SFXHitEnemy" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource( 6 )
+
+[node name="SFXFootstepsOthers" type="AudioStreamPlayer3D" parent="Sound"]
+stream = ExtResource( 5 )
+unit_size = 3.0
+
+[node name="SFXHit" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource( 7 )
+volume_db = -5.0
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="ShootTimer" type="Timer" parent="Timers"]
+autostart = true
+
+[connection signal="timeout" from="Timers/ShootTimer" to="." method="_on_ShootTimer_timeout"]

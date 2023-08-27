@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/weapons/common/gun_data.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+weapon_name = ""
+node_path = ""
+type = ""
+slot = -1
+damage = -1
+fire_rate_rpm = -1
+semi_auto = false
+max_ammo = -1
+max_ammo_mag = -1
+reload_time_sec = -1.0
+swap_time_sec = -1.0
+vertical_recoil_impulse = -1.0
+vertical_recoil_drop = -1.0
+vertical_recoil_max_degrees = -1
+horizontal_recoil_impulse = -1.0
+horizontal_recoil_drop = -1.0
+horizontal_recoil_max_degrees = -1
+move_speed_mult = -1
+range_max_damage = -1.0
+dmg_dropoff_per_10_range = -1.0
+armor_penetration = -1
